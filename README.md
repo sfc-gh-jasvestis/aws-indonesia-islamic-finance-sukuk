@@ -10,7 +10,6 @@ Indonesia's Islamic capital market has reached US$64 billion, with sovereign SBS
 flowchart LR
     S3[S3 Data Landing] --> SP[Snowpipe]
     KIN[Kinesis] --> SPS[Snowpipe Streaming]
-    SP --> RAW[RAW Tables]
     SPS --> RAW
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
