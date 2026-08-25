@@ -118,7 +118,7 @@ Industry research and Snowflake customer outcomes:
 - **Indonesia is the world's largest sovereign sukuk issuer — $55B outstanding in 2024, 20% of total government debt** — [Ministry of Finance Indonesia](https://www.djppr.kemenkeu.go.id/en/page/load/1)
 - **Global sukuk issuance reached $195B in 2024 — Indonesia, Saudi Arabia, and Malaysia account for 75%** — [S&P Global Ratings](https://www.spglobal.com/ratings/en/research-insights/special-reports/islamic-finance-outlook-2025)
 - **Green sukuk and sustainability-linked sukuk growing 35% annually — Indonesia issued world's first green sukuk in 2018** — [Climate Bonds Initiative](https://www.climatebonds.net/resources/reports/green-sukuk)
-- **Bloomberg and Refinitiv provide Shariah-compliant indices and analytics on Snowflake Marketplace** — [Snowflake Financial Services](https://www.snowflake.com/en/data-cloud/financial-services/)
+- **Western Union** (Snowflake customer): processes 1B+ cross-border transactions on Snowflake with real-time compliance monitoring across 200+ countries -- [snowflake.com/customers/western-union](https://www.snowflake.com/en/customers/all-customers/case-study/western-union/)
 
 ## Key Demo Numbers
 
