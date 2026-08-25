@@ -115,11 +115,10 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Indonesia's Islamic finance market reached US$64B in assets in 2023** — [OJK](https://www.ojk.go.id/)
-- **SBSN sovereign Sukuk outstanding reached Rp 1,200 trillion by end 2023** — [DJPPR Ministry of Finance](https://www.djppr.kemenkeu.go.id/)
-- **Indonesia's Islamic fund management industry grew 18% YoY in 2023** — [OJK](https://www.ojk.go.id/)
-- **Real-time portfolio analytics reduces risk reporting latency from days to minutes** — [McKinsey Asset Management](https://www.mckinsey.com/industries/financial-services/our-insights)
-
+- **Indonesia is the world's largest sovereign sukuk issuer — $55B outstanding in 2024, 20% of total government debt** — [Ministry of Finance Indonesia](https://www.djppr.kemenkeu.go.id/en/page/load/1)
+- **Global sukuk issuance reached $195B in 2024 — Indonesia, Saudi Arabia, and Malaysia account for 75%** — [S&P Global Ratings](https://www.spglobal.com/ratings/en/research-insights/special-reports/islamic-finance-outlook-2025)
+- **Green sukuk and sustainability-linked sukuk growing 35% annually — Indonesia issued world's first green sukuk in 2018** — [Climate Bonds Initiative](https://www.climatebonds.net/resources/reports/green-sukuk)
+- **Bloomberg and Refinitiv provide Shariah-compliant indices and analytics on Snowflake Marketplace** — [Snowflake Financial Services](https://www.snowflake.com/en/data-cloud/financial-services/)
 
 ## Key Demo Numbers
 
