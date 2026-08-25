@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_indonesia_islamic_finance_sukuk_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: ISSUER_WATCHLIST_ALERT
 CREATE OR REPLACE ALERT APP.ISSUER_WATCHLIST_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_indonesia_islamic_finance_sukuk_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Sukuk Portfolio Analytics: Issuer added to watchlist — credit rating downgrade',
     'Issuer added to watchlist — credit rating downgrade'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_indonesia_islamic_finance_sukuk_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Sukuk Portfolio Analytics: Portfolio yield deviation exceeds threshold',
     'Portfolio yield deviation exceeds threshold'
   );
