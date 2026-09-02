@@ -1,106 +1,79 @@
-# Demo Script: Sukuk Portfolio Analytics
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake delivers Sukuk portfolio intelligence — Dynamic Tables aggregate 800 holdings, ML.FORECAST projects yield trajectories, and Cortex Analyst answers portfolio questions in natural language"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Sukuk Portfolio Analytics
 
----
+**Indonesia - Islamic Finance**
+Use case: Sukuk Portfolio Management
 
-## Two Personas
+> Sovereign and corporate Sukuk analytics for Indonesia's US$64B Islamic capital market — Dynamic Tables build real-time portfolio views, ML.FORECAST projects yield curves, and Cortex AI answers portfolio questions.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **H. Muhammad Faisal** | CIO Islamic Fund | React App (SPCS) | Portfolio performance, yield optimization, sovereign vs corporate allocation, Shariah compliance |
-| **Dian Pratiwi** | Fixed Income Portfolio Manager | Amazon QuickSight | Daily valuations, maturity profiles, liquidity risk, BI rate impact, benchmark tracking |
+## Why Snowflake
 
----
+Snowflake delivers Sukuk portfolio intelligence — Dynamic Tables aggregate 800 holdings, ML.FORECAST projects yield trajectories, and Cortex Analyst answers portfolio questions in natural language
 
-## What's Built
+- **ML.FORECAST on Indonesian Sukuk yield curves** - Only demo forecasting SBSN and corporate Sukuk yields with BI rate sensitivity
+- **Sovereign vs corporate allocation analytics** - Unique to Indonesian market with SBSN dominance
+- **Dynamic Tables for real-time portfolio valuation** - Rebuilds portfolio views from 80,000 market data points every 2 hours
+- **Indonesian Islamic finance context** - World's largest Muslim population, US$64B Islamic capital market, Rupiah economics
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `ID_ISLAMIC_FINANCE_SUKUK` |
+| Service | `ID_ISLAMIC_FINANCE_SUKUK_APP` |
+| Compute pool | `SEA_DEMOS_INDONESIA_POOL` |
+| Dimension table | `RAW.PORTFOLIO_DOCS` (20 rows) |
+| Fact table | `RAW.MARKET_DATA` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | IDR (Rp) |
+
+Regions in play: Jakarta, North Sumatra, Riau, East Kalimantan, Sulawesi
+Segments: Sovereign Sukuk, Corporate Sukuk, Retail Sukuk, Green Sukuk
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh ID_ISLAMIC_FINANCE_SUKUK
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 5 tables | SUKUK_HOLDINGS (800), VALUATIONS (20000), ISSUERS (150), MARKET_DATA (80000), PORTFOLIO_DOCS (60) |
-| **CURATED** | 4 Dynamic Tables | PORTFOLIO_SUMMARY, YIELD_CURVES, ISSUER_RISK, MATURITY_LADDER |
-| **ML** | ML.FORECAST | Forecasting + anomaly detection |
-| **AI** | COMPLETE, AI_EXTRACT, SUMMARIZE | Classification + extraction |
-| **Search** | Cortex Search | 60 documents indexed |
-| **Agent** | SUKUK_PORTFOLIO_AGENT | Semantic View + Search tools |
+| Outstanding Sukuk | `Rp 847T` | total across Portfolio Docs |
+| New Issuance (YTD) | `Rp 124T` | total across Portfolio Docs |
+| Avg Yield | `6.8%` | average per event |
+| Active Issuers | `42` | total across Portfolio Docs |
+| Bid-Ask Spread | `12 bps` | average per event |
+| Foreign Holdings | `18%` | average per event |
+| Tenor Avg | `7.2 yrs` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Portfolio Overview
+2. Yield Analytics
+3. Risk Management
+4. Ask AI
+5. Architecture & Data
 
-Indonesia's Islamic capital market has reached US$64 billion, with sovereign SBSN dominating issuance. An Islamic fund managing Rp 45 trillion needs real-time portfolio intelligence — yield forecasting, BI rate sensitivity analysis, and AI-generated investment commentary — as it navigates potential rate cuts and corporate credit deterioration.
+## Talking points
 
----
+- **Rp 45T** - Sukuk portfolio AUM (60% sovereign, 40% corporate)
+- **800 holdings** - across SBSN and corporate Sukuk
+- **7.8%** - weighted average yield (45bps above benchmark)
+- **2 issuers** - on watchlist following credit review
+- **80,000 data points** - market data refreshed every 2 hours
 
-## Script
+## Business impact
 
-### [0:00–0:45] PORTFOLIO OVERVIEW
-
-**Show**: Portfolio Overview tab
-
-> "Rp 45 trillion Sukuk portfolio — 60% sovereign SBSN, 40% corporate across 800 holdings."
-
-**Action**: Point at Rp 45T AUM KPI
-
-### [0:45–1:30] YIELD ANALYTICS
-
-**Show**: Yield Analytics tab
-
-> "Dynamic Tables rebuild yield curves every 2 hours from 80,000 market data points."
-
-**Action**: Show yield curve by issuer type
-
-### [1:30–2:15] RISK MANAGEMENT
-
-**Show**: Risk Management tab
-
-> "Two issuers on watchlist — combined exposure Rp 3.2 trillion (7.1% of portfolio)."
-
-**Action**: Show issuer exposure heatmap
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Faisal asks: 'What is our total exposure to BBB-rated issuers?'"
-
-**Action**: Type portfolio question
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Six Snowflake capabilities, five AWS services."
-
-**Action**: Walk through architecture diagram
-
+- Indonesia's Islamic finance market reached US$64B in assets in 2023 (OJK)
+- SBSN sovereign Sukuk outstanding reached Rp 1,200 trillion by end 2023 (DJPPR Ministry of Finance)
+- Indonesia's Islamic fund management industry grew 18% YoY in 2023 (OJK)
+- Real-time portfolio analytics reduces risk reporting latency from days to minutes (McKinsey Asset Management)
 
 ---
-
-## Key Demo Differentiators
-
-1. **ML.FORECAST on Indonesian Sukuk yield curves** — Only demo forecasting SBSN and corporate Sukuk yields with BI rate sensitivity
-2. **Sovereign vs corporate allocation analytics** — Unique to Indonesian market with SBSN dominance
-3. **Dynamic Tables for real-time portfolio valuation** — Rebuilds portfolio views from 80,000 market data points every 2 hours
-4. **Indonesian Islamic finance context** — World's largest Muslim population, US$64B Islamic capital market, Rupiah economics
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_SUKUK_INDONESIA.RAW.SUKUK_HOLDINGS` → 800
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_SUKUK_INDONESIA.RAW.VALUATIONS` → 20000
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_SUKUK_INDONESIA.RAW.MARKET_DATA` → 80000
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_SUKUK_INDONESIA.ML.YIELD_CURVE_FORECAST_RESULTS` → >0
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_SUKUK_INDONESIA.AI.DOC_EXTRACT_RESULTS` → 60
-
+Generated from `generator/demo_specs/aws-indonesia-islamic-finance-sukuk.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-indonesia-islamic-finance-sukuk` instead.
