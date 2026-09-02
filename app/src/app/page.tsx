@@ -32,15 +32,22 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // KPI values come from /api/data, which reads CURATED.KPI_SUMMARY. The literal
+  // stays as a fallback so the card still renders if the API is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Outstanding Sukuk" value="Rp 847T" status="neutral" />
-        <KPICard title="New Issuance (YTD)" value="Rp 124T" status="neutral" />
-        <KPICard title="Avg Yield" value="6.8%" status="neutral" />
-        <KPICard title="Active Issuers" value="42" status="neutral" />
+        <KPICard title="Outstanding Sukuk" value={kpiVal('Outstanding Sukuk', 'Rp 847T')} status="neutral" />
+        <KPICard title="New Issuance (YTD)" value={kpiVal('New Issuance (YTD)', 'Rp 124T')} status="neutral" />
+        <KPICard title="Avg Yield" value={kpiVal('Avg Yield', '6.8%')} status="neutral" />
+        <KPICard title="Active Issuers" value={kpiVal('Active Issuers', '42')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -87,9 +94,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Bid-Ask Spread" value="12 bps" />
-        <KPICard title="Foreign Holdings" value="18%" />
-        <KPICard title="Tenor Avg" value="7.2 yrs" />
+        <KPICard title="Bid-Ask Spread" value={kpiVal('Bid-Ask Spread', '12 bps')} />
+        <KPICard title="Foreign Holdings" value={kpiVal('Foreign Holdings', '18%')} />
+        <KPICard title="Tenor Avg" value={kpiVal('Tenor Avg', '7.2 yrs')} />
       </div>
       <Chart
         data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]}
