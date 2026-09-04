@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="indonesia"
+            labels={{ entity: 'Issuers', event: 'Market Data', alert: 'Limit Breaches' }}
             regions={data?.regions}
             markers={[{"label": "Jakarta", "value": "HQ: Rp 8.4T AUM", "color": "blue", "size": "lg"}, {"label": "Surabaya", "value": "Regional: Rp 2.1T", "color": "green", "size": "md"}, {"label": "Bandung", "value": "Branch network", "color": "green", "size": "md"}, {"label": "Medan", "value": "N.Sumatra hub", "color": "green", "size": "sm"}]}
             routes={[]}
@@ -83,8 +84,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: '#' },
           { key: 'name', header: 'Issuer' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Rating' },
-          { key: 'value', header: 'Amount (Rp T)' },
+          { key: 'm1', header: 'Amount (Rp T)' },
+          { key: 'm2', header: 'Bid Ask Spread' },
+          { key: 'm3', header: 'Foreign Holdings' },
+          { key: 'events', header: 'Market Data' },
+          { key: 'alerts', header: 'Limit Breaches' },
         ]}
         data={data?.entities || []}
         title="Recent Sukuk Issuances"
